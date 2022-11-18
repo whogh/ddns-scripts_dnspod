@@ -12,6 +12,7 @@
 local __URLBASE __HOST __DOMAIN __TYPE __CMDBASE __POST __POST1 __RECIP __RECID __TTL
 __URLBASE="https://dnsapi.cn"
 
+
 # 从 $domain 分离主机和域名
 __HOST="${domain%.*.*}"
 __DOMAIN="${domain#$__HOST.}"
