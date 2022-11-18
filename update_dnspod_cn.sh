@@ -13,10 +13,8 @@ local __URLBASE __HOST __DOMAIN __TYPE __CMDBASE __POST __POST1 __RECIP __RECID 
 __URLBASE="https://dnsapi.cn"
 
 # 从 $domain 分离主机和域名
-[ "${domain:0:2}" = "@." ] && domain="${domain/./}" # 主域名处理
-[ "$domain" = "${domain/@/}" ] && domain="${domain/./@}" # 未找到分隔符，兼容常用域名格式
-__HOST="${domain%%@*}"
-__DOMAIN="${domain#*@}"
+__HOST="${domain%.*.*}"
+__DOMAIN="${domain#$__HOST.}"
 [ -z "$__HOST" -o "$__HOST" = "$__DOMAIN" ] && __HOST=@
 
 # 设置记录类型
