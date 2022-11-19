@@ -14,8 +14,8 @@ __URLBASE="https://dnsapi.cn"
 
 
 # 从 $domain 分离主机和域名
-__HOST="${domain%.*.*}"
-__DOMAIN="${domain#$__HOST.}"
+[ "$domain" == "${domain/@/}" ] && __HOST="${domain%.*.*}"  #提取记录值
+__DOMAIN="${domain#$__HOST.}"  #提取域名
 [ -z "$__HOST" -o "$__HOST" = "$__DOMAIN" ] && __HOST=@
 
 # 设置记录类型
